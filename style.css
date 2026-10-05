@@ -1,0 +1,480 @@
+/* ---------- Base ---------- */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background:
+        radial-gradient(circle at 86% 8%, rgba(37, 99, 235, 0.08), transparent 28rem),
+        #f7f8fa;
+    color: #20242a;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont,
+                 "Segoe UI", sans-serif;
+    line-height: 1.7;
+}
+
+
+/* ---------- Navigation ---------- */
+
+body > nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 240px;
+    height: 100vh;
+    border-right: 1px solid #d9dde3;
+    background: #ffffff;
+    overflow-y: auto;
+    box-shadow: 8px 0 24px rgba(17, 24, 32, 0.06);
+    z-index: 10;
+}
+
+body > nav::before {
+    display: block;
+    height: 4px;
+    background: linear-gradient(90deg, #2563eb, #7c3aed, #db2777);
+    content: "";
+}
+
+.nav-container {
+    max-width: none;
+    margin: 0;
+    padding: 28px 16px;
+}
+
+nav ul {
+    display: block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li {
+    margin: 0;
+}
+
+nav a {
+    display: block;
+    padding: 10px 12px;
+    color: #5b6470;
+    text-decoration: none;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    transition: color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+nav a:hover {
+    color: #111820;
+    background: #f1f3f5;
+    transform: translateX(3px);
+}
+
+nav a.active {
+    color: #111820;
+    font-weight: 600;
+    border-bottom: none;
+    background: linear-gradient(90deg, #e7efff, #f1edff);
+    box-shadow: inset 3px 0 #2563eb;
+}
+
+
+/* ---------- Main content ---------- */
+
+main {
+    max-width: 1000px;
+    margin: 0 0 0 240px;
+    padding: 48px 24px 80px;
+}
+
+article {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 48px;
+    border: 1px solid rgba(217, 221, 227, 0.9);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: 0 18px 45px rgba(17, 24, 32, 0.07);
+}
+
+
+/* ---------- Typography ---------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #161a1f;
+    line-height: 1.25;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 32px;
+    font-size: 2.4rem;
+    letter-spacing: -0.03em;
+}
+
+h2 {
+    margin-top: 48px;
+    margin-bottom: 16px;
+    font-size: 1.7rem;
+}
+
+h3 {
+    margin-top: 36px;
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+}
+
+p {
+    margin: 0 0 20px;
+}
+
+a {
+    color: #2563eb;
+}
+
+a:hover {
+    color: #1d4ed8;
+}
+
+
+/* ---------- Lists ---------- */
+
+ul,
+ol {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 28px;
+}
+
+
+/* ---------- Figures ---------- */
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 28px auto;
+}
+
+
+/* ---------- Code ---------- */
+
+code {
+    padding: 2px 5px;
+    border-radius: 4px;
+    background: #e9edf2;
+    font-family: "Droid Sans Mono", "DejaVu Sans Mono",
+                 monospace;
+    font-size: 0.9em;
+}
+
+pre {
+    overflow-x: auto;
+    margin: 24px 0;
+    padding: 18px;
+    border: 1px solid #d9dde3;
+    border-radius: 6px;
+    background: #eef1f4;
+    line-height: 1.5;
+}
+
+pre code {
+    padding: 0;
+    background: none;
+    font-size: 0.9rem;
+}
+
+
+/* ---------- Blockquotes ---------- */
+
+blockquote {
+    margin: 24px 0;
+    padding: 4px 20px;
+    border-left: 4px solid #c7ccd3;
+    color: #5b6470;
+}
+
+
+/* ---------- Tables ---------- */
+
+table {
+    width: 100%;
+    margin: 24px 0;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 10px 12px;
+    border: 1px solid #d9dde3;
+    text-align: left;
+}
+
+th {
+    background: #eef1f4;
+}
+
+
+/* ---------- Horizontal rules ---------- */
+
+hr {
+    margin: 40px 0;
+    border: 0;
+    border-top: 1px solid #d9dde3;
+}
+
+
+/* ---------- MathJax ---------- */
+
+mjx-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 100%;
+}
+
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 600px) {
+    body > nav {
+        position: static;
+        width: auto;
+        height: auto;
+        border-right: 0;
+        border-bottom: 1px solid #d9dde3;
+        box-shadow: 0 5px 18px rgba(17, 24, 32, 0.06);
+    }
+
+    body > nav::before {
+        height: 3px;
+    }
+
+    .nav-container {
+        padding: 16px 12px;
+    }
+
+    nav ul {
+        gap: 0;
+    }
+
+    nav a {
+        padding: 12px 8px;
+        font-size: 0.9rem;
+    }
+
+    main {
+        margin: 0;
+        padding: 32px 16px 60px;
+    }
+
+    article {
+        padding: 28px 22px;
+        border-radius: 10px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    nav a {
+        transition: none;
+    }
+}
+
+.figure-container {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin: 28px 0;
+}
+
+.figure-container img {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+}
+
+.figure-container pre {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+}
+
+@media (max-width: 700px) {
+    .figure-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+/* ---------- Figures ---------- */
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 28px auto;
+}
+
+.figure-container {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin: 28px 0;
+}
+
+.figure-container img {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+}
+
+.figure-container pre {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+}
+
+@media (max-width: 700px) {
+    .figure-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+
+/* ---------- Code ---------- */
+
+code {
+    padding: 2px 5px;
+    border-radius: 4px;
+    background: #e9edf2;
+    font-family: "Droid Sans Mono", "DejaVu Sans Mono",
+                 monospace;
+    font-size: 0.9em;
+}
+
+pre {
+    overflow-x: auto;
+    margin: 24px 0;
+    padding: 18px;
+    border: 1px solid #d9dde3;
+    border-radius: 6px;
+    background: #eef1f4;
+    line-height: 1.5;
+}
+
+pre code {
+    padding: 0;
+    background: none;
+    font-size: 0.9rem;
+}
+
+
+/* ---------- Pygments ---------- */
+
+.highlight {
+    flex: 1;
+    min-width: 0;
+    overflow-x: auto;
+    margin: 0;
+}
+
+.highlight pre {
+    margin: 0;
+}
+
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.hll { background-color: #ffffcc }
+.c { color: #3D7B7B; font-style: italic } /* Comment */
+.err { border: 1px solid #FF0000 } /* Error */
+.k { color: #008000; font-weight: bold } /* Keyword */
+.o { color: #666666 } /* Operator */
+.ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
+.cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
+.cp { color: #9C6500 } /* Comment.Preproc */
+.cpf { color: #3D7B7B; font-style: italic } /* Comment.PreprocFile */
+.c1 { color: #3D7B7B; font-style: italic } /* Comment.Single */
+.cs { color: #3D7B7B; font-style: italic } /* Comment.Special */
+.gd { color: #A00000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.gr { color: #E40000 } /* Generic.Error */
+.gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.gi { color: #008400 } /* Generic.Inserted */
+.go { color: #717171 } /* Generic.Output */
+.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.gs { font-weight: bold } /* Generic.Strong */
+.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.gt { color: #0044DD } /* Generic.Traceback */
+.kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.kp { color: #008000 } /* Keyword.Pseudo */
+.kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.kt { color: #B00040 } /* Keyword.Type */
+.m { color: #666666 } /* Literal.Number */
+.s { color: #BA2121 } /* Literal.String */
+.na { color: #687822 } /* Name.Attribute */
+.nb { color: #008000 } /* Name.Builtin */
+.nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.no { color: #880000 } /* Name.Constant */
+.nd { color: #AA22FF } /* Name.Decorator */
+.ni { color: #717171; font-weight: bold } /* Name.Entity */
+.ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
+.nf { color: #0000FF } /* Name.Function */
+.nl { color: #767600 } /* Name.Label */
+.nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.nt { color: #008000; font-weight: bold } /* Name.Tag */
+.nv { color: #19177C } /* Name.Variable */
+.ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.w { color: #bbbbbb } /* Text.Whitespace */
+.mb { color: #666666 } /* Literal.Number.Bin */
+.mf { color: #666666 } /* Literal.Number.Float */
+.mh { color: #666666 } /* Literal.Number.Hex */
+.mi { color: #666666 } /* Literal.Number.Integer */
+.mo { color: #666666 } /* Literal.Number.Oct */
+.sa { color: #BA2121 } /* Literal.String.Affix */
+.sb { color: #BA2121 } /* Literal.String.Backtick */
+.sc { color: #BA2121 } /* Literal.String.Char */
+.dl { color: #BA2121 } /* Literal.String.Delimiter */
+.sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.s2 { color: #BA2121 } /* Literal.String.Double */
+.se { color: #AA5D1F; font-weight: bold } /* Literal.String.Escape */
+.sh { color: #BA2121 } /* Literal.String.Heredoc */
+.si { color: #A45A77; font-weight: bold } /* Literal.String.Interpol */
+.sx { color: #008000 } /* Literal.String.Other */
+.sr { color: #A45A77 } /* Literal.String.Regex */
+.s1 { color: #BA2121 } /* Literal.String.Single */
+.ss { color: #19177C } /* Literal.String.Symbol */
+.bp { color: #008000 } /* Name.Builtin.Pseudo */
+.fm { color: #0000FF } /* Name.Function.Magic */
+.vc { color: #19177C } /* Name.Variable.Class */
+.vg { color: #19177C } /* Name.Variable.Global */
+.vi { color: #19177C } /* Name.Variable.Instance */
+.vm { color: #19177C } /* Name.Variable.Magic */
+.il { color: #666666 } /* Literal.Number.Integer.Long */
