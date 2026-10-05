@@ -205,12 +205,17 @@ def replace_figures(content, figures):
     return content
 
 # build to generate the HTML files from the md files
-for page in page_elements:
-    with open(page["md_file"], "r") as f:
-        md_content = f.read()
+def build():
+    for page in page_elements:
+        with open(page["md_file"], "r") as f:
+            md_content = f.read()
+            
         md_content, figures = insert_pic(md_content)
         content = md.render(md_content)
         content = replace_figures(content, figures)
 
-    with open(page["html_file"], "w") as f:
-        f.write(page_builder(page["title"], nav(page_elements, page["html_file"].name), content)) 
+        with open(page["html_file"], "w") as f:
+            f.write(page_builder(page["title"], nav(page_elements, page["html_file"].name), content))
+
+if __name__ == "__main__":
+    build()
