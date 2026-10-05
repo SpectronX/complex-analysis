@@ -1,4 +1,6 @@
-### Complex Numbers
+<!-- title: Complex Numbers -->
+
+## Complex Numbers
 
 In mathematics, a real number is a number that can be used to measure a continuous one-dimensional quantity such as a length, duration or temperature. Real numbers can be thought of as all points on the number line. Real numbers are encountered in everyday life, for instance when measuring time, distance, or temperature.
 

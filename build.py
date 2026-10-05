@@ -69,8 +69,8 @@ md = MarkdownIt("commonmark", {"html": True}) # initializing the MarkdownIt pars
 # metadata extraction from markdown files
 def page_title(text):
     for line in text.splitlines():
-        if line.startswith("# "):
-            return line[2:].strip()
+        if line.startswith("<!-- title:"):
+            return line.split(":", 1)[1].strip().removesuffix("-->").strip()
     return "Untitled"
 
 def get_pages():
