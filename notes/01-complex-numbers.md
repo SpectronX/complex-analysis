@@ -1,4 +1,5 @@
 <!-- title: Complex Numbers -->
+<!-- order: 1 -->
 
 ## Complex Numbers
 
