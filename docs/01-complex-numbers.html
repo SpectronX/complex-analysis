@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,10 +23,14 @@
 </head>
 
 <body>
+    <div class="theme-toggle">
+        <button id="light-theme" aria-label="Light mode">☼</button>
+        <button id="dark-theme" aria-label="Dark mode">☾</button>
+    </div>
 
     <nav>
         <div class="nav-container">
-            <nav><ul><li><a href="01-complex-numbers.html" class="active">Complex Numbers</a></li></ul></nav>
+            <ul><li><a href="01-complex-numbers.html" class="active">Complex Numbers</a></li></ul>
         </div>
     </nav>
 
@@ -41,7 +46,14 @@
 <p>
         <div class="figure-container">
             <img src="figures/01-plot-1.png" alt="01-plot-1">
-            <pre><code>import matplotlib.pyplot as plt
+
+            <button class="code-toggle"
+                    onclick="toggleCode(this)">
+                Show code
+            </button>
+
+            <div class="figure-code" hidden>
+                <pre><code>import matplotlib.pyplot as plt
 
 plt.figure(figsize=(5, 5))
 plt.xlim(-1.5, 1.5)
@@ -56,6 +68,7 @@ plt.text(0.05, -1, &#x27;-i =(0, -1)&#x27;, fontsize=12, ha=&#x27;left&#x27;, va
 plt.xlabel(&#x27;Real Part&#x27;)
 plt.ylabel(&#x27;Imaginary Part&#x27;)
 plt.grid()</code></pre>
+            </div>
         </div></p>
 <h3>Basic Algebraic Properties of Complex Numbers</h3>
 <h4>Commutative Property</h4>
@@ -94,7 +107,14 @@ plt.grid()</code></pre>
 <p>
         <div class="figure-container">
             <img src="figures/01-plot-2.png" alt="01-plot-2">
-            <pre><code>import numpy as np
+
+            <button class="code-toggle"
+                    onclick="toggleCode(this)">
+                Show code
+            </button>
+
+            <div class="figure-code" hidden>
+                <pre><code>import numpy as np
 import matplotlib.pyplot as plt
 
 
@@ -110,6 +130,7 @@ plt.ylabel(&#x27;Imaginary Part&#x27;)
 plt.axhline(0, color=&#x27;black&#x27;, lw=0.5)
 plt.axvline(0, color=&#x27;black&#x27;, lw=0.5)
 plt.grid()</code></pre>
+            </div>
         </div></p>
 <p>The modulus of a complex number $z = a + bi$ is given by the formula:</p>
 <p>$$|z| = \sqrt{a^2 + b^2}$$</p>
@@ -117,6 +138,53 @@ plt.grid()</code></pre>
 
         </article>
     </main>
+
+    <script>
+    function toggleCode(button) {
+        const code = button.nextElementSibling;
+
+        if (code.hidden) {
+            code.hidden = false;
+            button.textContent = "Hide code";
+        } else {
+            code.hidden = true;
+            button.textContent = "Show code";
+        }
+    }
+    </script>
+
+    <script>
+    const lightButton = document.getElementById("light-theme");
+    const darkButton = document.getElementById("dark-theme");
+
+    function setTheme(theme) {
+        document.documentElement.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+
+        lightButton.classList.toggle("active", theme === "light");
+        darkButton.classList.toggle("active", theme === "dark");
+    }
+
+    lightButton.addEventListener("click", () => {
+        setTheme("light");
+    });
+
+    darkButton.addEventListener("click", () => {
+        setTheme("dark");
+    });
+
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme) {
+        setTheme(savedTheme);
+    } else {
+        const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+        ).matches;
+
+        setTheme(prefersDark ? "dark" : "light");
+    }
+    </script>
 
 </body>
 </html>
