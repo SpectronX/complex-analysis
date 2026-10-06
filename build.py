@@ -67,11 +67,15 @@ for pic in PICS_MAIN_DIR.glob("*"):
 md = MarkdownIt("commonmark", {"html": True}) # initializing the MarkdownIt parser.
 
 # metadata extraction from markdown files
-def page_title(text):
+def page_metadata(text):
+    title = "Untitled"
+    order = float("inf")
     for line in text.splitlines():
         if line.startswith("<!-- title:"):
-            return line.split(":", 1)[1].strip().removesuffix("-->").strip()
-    return "Untitled"
+            title = line.split(":", 1)[1].strip().removesuffix("-->").strip()
+        elif line.startswith("<!-- order:"):
+            order = int(line.split(":", 1)[1].strip().removesuffix("-->").strip())
+    return title, order
 
 def get_pages():
     pages = []
@@ -79,11 +83,14 @@ def get_pages():
         html_file = (DOCS_DIR / md_file.name).with_suffix(".html")
         with open(md_file, "r") as f:
             md_content = f.read()
-            pages.append({
-                "md_file": md_file,
-                "html_file": html_file,
-                "title": page_title(md_content)
-            })
+        title, order = page_metadata(md_content)
+        pages.append({
+            "md_file": md_file,
+            "html_file": html_file,
+            "title": title,
+            "order": order
+        })
+        pages.sort(key=lambda page: page["order"])
     return pages
 
 page_elements = get_pages()
@@ -97,13 +104,14 @@ def nav(page_elements, check_html_file):
             nav_items.append(f'<li><a href="{item["html_file"].name}" class="active">{item["title"]}</a></li>')
         else:
             nav_items.append(f'<li><a href="{item["html_file"].name}">{item["title"]}</a></li>')
-    nav_html = "\n".join(nav_items)
-    return f'<nav><ul>{nav_html}</ul></nav>'
+   
+    return f'<ul>{"".join(nav_items)}</ul>'
 
 # page template for the HTML pages
 def page_builder(title, nav, body):
     return f"""<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -126,6 +134,10 @@ def page_builder(title, nav, body):
 </head>
 
 <body>
+    <div class="theme-toggle">
+        <button id="light-theme" aria-label="Light mode">☼</button>
+        <button id="dark-theme" aria-label="Dark mode">☾</button>
+    </div>
 
     <nav>
         <div class="nav-container">
@@ -138,6 +150,53 @@ def page_builder(title, nav, body):
             {body}
         </article>
     </main>
+
+    <script>
+    function toggleCode(button) {{
+        const code = button.nextElementSibling;
+
+        if (code.hidden) {{
+            code.hidden = false;
+            button.textContent = "Hide code";
+        }} else {{
+            code.hidden = true;
+            button.textContent = "Show code";
+        }}
+    }}
+    </script>
+
+    <script>
+    const lightButton = document.getElementById("light-theme");
+    const darkButton = document.getElementById("dark-theme");
+
+    function setTheme(theme) {{
+        document.documentElement.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+
+        lightButton.classList.toggle("active", theme === "light");
+        darkButton.classList.toggle("active", theme === "dark");
+    }}
+
+    lightButton.addEventListener("click", () => {{
+        setTheme("light");
+    }});
+
+    darkButton.addEventListener("click", () => {{
+        setTheme("dark");
+    }});
+
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme) {{
+        setTheme(savedTheme);
+    }} else {{
+        const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+        ).matches;
+
+        setTheme(prefersDark ? "dark" : "light");
+    }}
+    </script>
 
 </body>
 </html>"""
@@ -190,7 +249,15 @@ def insert_pic(md_content):
         figure = f"""
         <div class="figure-container">
             {image}
-            {code}
+
+            <button class="code-toggle"
+                    onclick="toggleCode(this)">
+                Show code
+            </button>
+
+            <div class="figure-code" hidden>
+                {code}
+            </div>
         </div>"""
 
         figures[placeholder] = figure
