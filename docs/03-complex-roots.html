@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+    };
+    </script>
+
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <title>Complex Roots</title>
+</head>
+
+<body>
+    <div class="theme-toggle">
+        <button id="light-theme" aria-label="Light mode">☼</button>
+        <button id="dark-theme" aria-label="Dark mode">☾</button>
+    </div>
+
+    <nav>
+        <div class="nav-container">
+            <ul><li><a href="01-complex-numbers.html">Complex Numbers</a></li><li><a href="02-complex-conjugates.html">Complex Conjugates & Exponentials</a></li><li><a href="03-complex-roots.html" class="active">Complex Roots</a></li></ul>
+        </div>
+    </nav>
+
+    <main>
+        <article>
+            <!-- title: Complex Roots -->
+<!-- order: 3 -->
+<h2>Complex Roots</h2>
+<p>Let's begin from the basics of complex roots. We are able to find the roots of complex numbers using the polar form of complex numbers. Here's the link to the <a href="02-complex-conjugates.html">notes on the polar form of complex numbers</a>.</p>
+<p>Consider a point $z = re^{i\theta}$ in the complex plane, where $r$ is the modulus of $z$ and $\theta$ is the argument of $z$. Should I move $2k\pi$ forward or backward, the point $z$ will still be the same. This is because $e^{i\theta}$ is periodic with period $2\pi$.</p>
+<p>Therefore, two nonzero complex numbers $z_1$ and $z_2$ are equal if and only if they have the same modulus and their arguments differ by a multiple of $2\pi$. Thus, if $z_1 = r_1 e^{i\theta_1}$ and $z_2 = r_2 e^{i\theta_2}$, then $z_1 = z_2$ if and only if $r_1 = r_2$ and $\theta_1 = \theta_2 + 2k\pi$, where $k$ is an integer $(k = 0, \pm 1, \pm 2, \ldots)$.</p>
+<p>Now, to find the $n$-th roots of a nonzero complex number $z_0 = r_0 e^{i\theta_0}$, we look for every number $z = re^{i\theta}$ such that $z^n = z_0$, and the condition above must hold. This implies that</p>
+<p>$$r^n e^{in\theta} = r_0 e^{i\theta_0}$$</p>
+<p>which means that $r^n = r_0$ and $n\theta = \theta_0 + 2k\pi$, where $k$ is an integer $(k = 0, \pm 1, \pm 2, \ldots)$. Hence</p>
+<p>$$r = \sqrt[n]{r_0}$$</p>
+<p>and</p>
+<p>$$\theta = \frac{\theta_0 + 2k\pi}{n}$$</p>
+<p>The complex number $z_0 = r_0 e^{i\theta_0}$ has $n$ distinct $n$-th roots, given by</p>
+<p>$$c_k = \sqrt[n]{r_0} e^{i(\frac{\theta_0 + 2k\pi}{n})}$$</p>
+<p>for $k = 0, 1, 2, \ldots, n-1$. Other integer values of $k$ only repeat these roots, since $k$ and $k + n$ give arguments that differ by exactly $2\pi$.</p>
+<p>Here $\sqrt[n]{r_0}$ is the modulus of the $n$-th roots of $z_0$ and $\frac{\theta_0 + 2k\pi}{n}$ is the argument of the $n$-th roots of $z_0$. The $n$ distinct $n$-th roots of $z_0$ are evenly spaced around a circle of radius $\sqrt[n]{r_0}$ in the complex plane, with an angular separation of $\frac{2\pi}{n}$ between each root.</p>
+<p>The principal $n$-th root of $z_0$ is the root corresponding to $k = 0$, taking $\theta_0 = \text{Arg}(z_0)$, and it is given by</p>
+<p>$$c_0 = \sqrt[n]{r_0} e^{i(\frac{\theta_0}{n})}$$</p>
+<p>What does it even mean to find the roots of a complex number? What does it help us with? What are they going to be used for?</p>
+<p>We see that the $n$-th roots, when raised to the power of $n$, will give us back the original complex number. On their own, that's the information we have and they're not very useful. However, they give us the solutions of equations of the form $z^n = z_0$, and they appear when solving polynomial equations with complex coefficients. For example, the quadratic formula needs a square root of a complex number whenever the discriminant is complex. These cases would be treated in subsequent notes.</p>
+<p>Let's consider a ceiling fan as well. If I have my circle drawn out, I can find the $n$-th roots of a complex number where $n$ corresponds to the blades of a fan. With the property of the roots being equally separated on the circular plane, each root is a point on the circle that a blade passes through.</p>
+<h3>Example</h3>
+<p>Let's take an example. Say we want to find the cube roots of $z_0 = 8e^{i\frac{\pi}{2}}$. We can use the above formula to find the three distinct cube roots of $z_0$.</p>
+<p>The modulus of $z_0$ is $r_0 = 8$ and the argument of $z_0$ is $\theta_0 = \frac{\pi}{2}$. Therefore, the three distinct cube roots of $z_0$ are given by</p>
+<p>$$c_k = \sqrt[3]{8} e^{i(\frac{\frac{\pi}{2} + 2k\pi}{3})}$$</p>
+<p>for $k = 0, 1, 2$, that is,</p>
+<ul>
+<li>$c_0 = 2e^{i\frac{\pi}{6}}$</li>
+<li>$c_1 = 2e^{i\frac{5\pi}{6}}$</li>
+<li>$c_2 = 2e^{i\frac{3\pi}{2}}$</li>
+</ul>
+<p>
+        <div class="figure-container">
+            <img src="figures/03-plot-1.png" alt="03-plot-1">
+
+            <button class="code-toggle"
+                    onclick="toggleCode(this)">
+                Show code
+            </button>
+
+            <div class="figure-code" hidden>
+                <pre><code>import numpy as np
+import matplotlib.pyplot as plt
+
+r_0 = 8
+theta_0 = 0
+n = 3
+
+k = np.arange(n)
+n_roots = r_0**(1/n) * np.exp(1j * (theta_0 + 2*np.pi*k) / n)
+
+angle_spacing = np.linspace(0, 2*np.pi, 400)
+plt.subplots(figsize=(6, 6))
+plt.plot(np.cos(angle_spacing), np.sin(angle_spacing), &#x27;k--&#x27;, lw=1, label=&#x27;unit circle&#x27;)
+plt.plot(2*np.cos(angle_spacing), 2*np.sin(angle_spacing), color=&#x27;gray&#x27;, lw=1, label=&#x27;|z| = 2&#x27;)
+
+for i, z in enumerate(n_roots):
+    plt.plot([0, z.real], [0, z.imag], &#x27;r-&#x27;, lw=0.8)
+    plt.plot(z.real, z.imag, &#x27;ro&#x27;)
+    plt.annotate(f&#x27;$z_{i}$&#x27;, (z.real, z.imag), textcoords=&#x27;offset points&#x27;, xytext=(8, 8))
+
+plt.xlim(-2.8, 2.8)
+plt.ylim(-2.8, 2.8)
+plt.axhline(0, color=&#x27;k&#x27;, lw=0.2)
+plt.axvline(0, color=&#x27;k&#x27;, lw=0.2)
+plt.xlabel(&#x27;Re&#x27;)
+plt.ylabel(&#x27;Im&#x27;)
+plt.title(&#x27;Cube roots of $8e^{i\\pi/2}$&#x27;)
+plt.legend(loc=&#x27;lower right&#x27;)
+plt.grid()
+plt.show()</code></pre>
+            </div>
+        </div></p>
+
+        </article>
+    </main>
+
+    <script>
+    function toggleCode(button) {
+        const code = button.nextElementSibling;
+
+        if (code.hidden) {
+            code.hidden = false;
+            button.textContent = "Hide code";
+        } else {
+            code.hidden = true;
+            button.textContent = "Show code";
+        }
+    }
+    </script>
+
+    <script>
+    const lightButton = document.getElementById("light-theme");
+    const darkButton = document.getElementById("dark-theme");
+
+    function setTheme(theme) {
+        document.documentElement.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+
+        lightButton.classList.toggle("active", theme === "light");
+        darkButton.classList.toggle("active", theme === "dark");
+    }
+
+    lightButton.addEventListener("click", () => {
+        setTheme("light");
+    });
+
+    darkButton.addEventListener("click", () => {
+        setTheme("dark");
+    });
+
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme) {
+        setTheme(savedTheme);
+    } else {
+        const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+        ).matches;
+
+        setTheme(prefersDark ? "dark" : "light");
+    }
+    </script>
+
+</body>
+</html>
