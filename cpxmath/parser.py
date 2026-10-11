@@ -12,6 +12,11 @@ expr_map = {
     "i": sp.I,
     "log": sp.log,
     "conjugate": sp.conjugate,
+    # for method 1 of parsing input data
+    "tan": lambda a, **kw: sp.sin(a) / sp.cos(a),
+    "cot": lambda a, **kw: sp.cos(a) / sp.sin(a),
+    "sec": lambda a, **kw: 1 / sp.cos(a),
+    "csc": lambda a, **kw: 1 / sp.sin(a),
 }
 
 @dataclass
