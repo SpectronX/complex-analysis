@@ -46,4 +46,4 @@ def analyze(function):
 
     u, v = get_re_im(f_cexpr)
     u_x, u_y, v_x, v_y = get_deriv(u, v)
-    return analyze(u_x, u_y, v_x, v_y)    
+    return CR_check(u_x, u_y, v_x, v_y)    
