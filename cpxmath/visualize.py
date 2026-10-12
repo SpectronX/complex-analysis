@@ -4,7 +4,7 @@ import sympy as sp
 
 from .symbols import z
 
-def visualize(function, start=-3.14, end=3.14, num_points=25):
+def visualize(function, start=-3.14, end=3.14, num_points=20):
     
     mapping_function = sp.lambdify(z, function, 'numpy')
 
@@ -16,11 +16,11 @@ def visualize(function, start=-3.14, end=3.14, num_points=25):
 
         v_grid = np.zeros((num_points, num_points), dtype=complex)
         for v in range(num_points):
-            v_grid[v] = re_vals + im_vals[v] * 1j
+            v_grid[v] = re_vals[v] + im_vals * 1j
 
         h_grid = np.zeros((num_points, num_points), dtype=complex)
         for h in range(num_points):
-            h_grid[v] = re_vals[h] + im_vals * 1j
+            h_grid[h] = re_vals + im_vals[h] * 1j
 
         return v_grid, h_grid
 
@@ -33,8 +33,8 @@ def visualize(function, start=-3.14, end=3.14, num_points=25):
         num_points = v_grid.shape[0]
 
         plt.figure(figsize=(13, 7))
-        plt.subplot(1, 2, 1)
 
+        plt.subplot(1, 2, 1)
         for i in range(num_points):
             plt.plot(v_grid[i].real, v_grid[i].imag)
             plt.plot(h_grid[i].real, h_grid[i].imag)
@@ -44,6 +44,7 @@ def visualize(function, start=-3.14, end=3.14, num_points=25):
         plt.grid(True)
         plt.axis("equal")
 
+        plt.subplot(1, 2, 2)
         for i in range(num_points):
             plt.plot(w_v[i].real, w_v[i].imag)
             plt.plot(w_h[i].real, w_h[i].imag)
