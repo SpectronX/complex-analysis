@@ -30,6 +30,7 @@ def analyze(function):
         eq2_satisfied = eq2 == 0
 
         return{
+            "Cauchy-Riemann Check": {},
             "equation_1": {"u_x": u_x, "v_y": v_y, "satisfied": eq1_satisfied},
             "equation_2": {"u_y": u_y, "-v_x": -v_x, "satisfied": eq2_satisfied},
             "satisfied": eq1_satisfied and eq2_satisfied
