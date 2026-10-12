@@ -4,7 +4,7 @@ from .symbols import z
 from sympy.parsing.sympy_parser import parse_expr, standard_transformations, implicit_multiplication_application
 from dataclasses import dataclass
 
-transformations = (standard_transformations + (implicit_multiplication_application))
+transformations = (standard_transformations + (implicit_multiplication_application,))
 
 expr_map = {
     "pi": sp.pi,
@@ -28,8 +28,8 @@ class ParsedFunction:
 def parse_function(function):
     try: 
         norm_str = function.replace("^", "**")
-        raw_expr = parse_expr(norm_str, local_dict={expr_map}, transformations=transformations, evaluate=False)
-        eval_expr = parse_expr(norm_str, local_dict={expr_map}, transformations=transformations, evaluate=True)
+        raw_expr = parse_expr(norm_str, local_dict=expr_map, transformations=transformations, evaluate=False)
+        eval_expr = parse_expr(norm_str, local_dict=expr_map, transformations=transformations, evaluate=True)
         if eval_expr.free_symbols - {z}:
             raise ValueError(f"Function might contain invalid symbols: {eval_expr.free_symbols - {z}}")
         return ParsedFunction(function, raw_expr, eval_expr)
