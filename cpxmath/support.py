@@ -3,7 +3,7 @@ import sympy as sp
 from .symbols import z
 
 allowed_functions = (sp.exp, sp.sin, sp.cos)
-e_msg = "Not supported. Supported: polynomials, rational, exponential, trigonometric."
+error_msg = "Not supported. Supported: polynomials, rational, exponential, trigonometric."
 
 # for method 2
 # allowed_functions = (sp.sin, sp.cos, sp.exp, sp.tan, sp.cot, sp.sec, sp.csc)
@@ -12,10 +12,10 @@ e_msg = "Not supported. Supported: polynomials, rational, exponential, trigonome
 def check_supported(expr):
     for f in expr.atoms(sp.Function):
         if not isinstance(f, allowed_functions) or not f.args[0].is_polynomial(z):
-            raise ValueError(e_msg)
+            raise ValueError(error_msg)
     for p in expr.atoms(sp.Pow):
         if p.base.has(z) and (p.exp.has(z) or not p.exp.is_Integer):
-            raise ValueError(e_msg)
+            raise ValueError(error_msg)
 
 def denoms(expr):
     d = []
