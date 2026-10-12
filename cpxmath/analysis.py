@@ -7,8 +7,7 @@ def analyze(function):
     x, y = sp.symbols("x y", real=True)
     cexpr = x + sp.I * y
 
-    f_cexpr = function.subs(z, cexpr)
-    f_cexpr = f_cexpr.expand()
+    f_cexpr = sp.expand_complex(function.subs(z, cexpr))
 
     def get_re_im(expr):
         u = sp.re(expr)
@@ -16,11 +15,11 @@ def analyze(function):
         return u, v
 
     def get_deriv(u, v):
-        u_x = sp.diff(u, x)
-        u_y = sp.diff(u, y)
+        u_x = sp.simplify(sp.diff(u, x))
+        u_y = sp.simplify(sp.diff(u, y))
 
-        v_x = sp.diff(v, x)
-        v_y = sp.diff(v, y)
+        v_x = sp.simplify(sp.diff(v, x))
+        v_y = sp.simplify(sp.diff(v, y))
 
         return u_x, u_y, v_x, v_y
 
@@ -31,17 +30,9 @@ def analyze(function):
         eq2_satisfied = eq2 == 0
 
         return{
-            "equation_1": {
-                "u_x": f"{u_x} \n",
-                "v_y": f"{v_y} \n",
-                "satisfied": f"{eq1_satisfied} \n"
-            },
-             "equation_1": {
-                "u_y": f"{u_y} \n",
-                "v_x": f"{-v_x} \n",
-                "satisfied": f"{eq2_satisfied} \n"
-            },
-            "satisfied": f"{eq1_satisfied and eq2_satisfied} \n"
+            "equation_1": {"u_x": u_x, "v_y": v_y, "satisfied": eq1_satisfied},
+            "equation_2": {"u_y": u_y, "-v_x": -v_x, "satisfied": eq2_satisfied},
+            "satisfied": eq1_satisfied and eq2_satisfied
         }
 
     u, v = get_re_im(f_cexpr)
