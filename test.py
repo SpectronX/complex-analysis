@@ -22,8 +22,8 @@ for name, block in result.items():
 print("\nDomain Analysis:")
 try:
     domain_result = analyze_domain(parsed_expr)
-    for name, value in domain_result.items():
-        print(f"  {name}: {value}")
+    for output in domain_result.values():
+        print(output)
 except UnsupportedFunctionError as e:
     print(f"domain: {e}")
 
