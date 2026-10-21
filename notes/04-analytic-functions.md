@@ -34,7 +34,7 @@ The limit of a function $f(z)$ as $z$ approaches a point $z_0$ is denoted as $\l
 
 By the definition of limits, we can say that the limit of a function $f(z)$ as $z$ approaches a point $z_0$ is equal to $L$ if, for every $\epsilon > 0$, there exists a $\delta > 0$ such that whenever $0 < |z - z_0| < \delta$, it follows that $|f(z) - L| < \epsilon$. This means that we can make the function values arbitrarily close to $L$ by choosing input values sufficiently close to $z_0$.
 
-### Continuity and theorems on limits
+### Theorems on limits
 
 - **Definition:** $f(z)$ is continuous at $z_0$ if $f(z_0)$ is defined and $\lim_{z \to z_0} f(z) = f(z_0)$.
 
@@ -44,9 +44,3 @@ By the definition of limits, we can say that the limit of a function $f(z)$ as $
   - $\lim_{z \to z_0} \frac{f(z)}{g(z)} = \frac{L}{M}$, provided $M \neq 0$
 
 - **Theorem 2:** If $f(z)$ is continuous at $z_0$ and $g(z)$ is continuous at $f(z_0)$, then the composition $g(f(z))$ is continuous at $z_0$.
-- **Theorem 3:** If $f(z)$ is continuous at $z_0$ and $g(z)$ is continuous at $z_0$, then the sum, product, and quotient (if $g(z_0) \neq 0$) of $f(z)$ and $g(z)$ are continuous at $z_0$.
-- **Theorem 4:** If $f(z)$ is continuous on a closed and bounded region $R$ in the complex plane, then $|f(z)|$ is bounded on $R$ and attains its maximum and minimum values on $R$. (Complex numbers have no ordering, so we compare moduli.)
-- **Theorem 5:** If $f(z)$ is continuous on a closed and bounded region $R$ in the complex plane, then $f(z)$ is uniformly continuous on $R$.
-- **Theorem 6:** If $f(z)$ is continuous on a closed and bounded region $R$ in the complex plane, then $f(z)$ is integrable on $R$.
-
-**Caution:** differentiability implies continuity, but not the other way round. For example, $f(z) = \bar{z}$ is continuous everywhere but differentiable nowhere, and $f(z) = |z|^2$ is differentiable only at $z = 0$. Differentiability needs a stronger condition, namely the Cauchy-Riemann equations.
