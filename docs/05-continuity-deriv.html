@@ -47,6 +47,66 @@
 </ol>
 <p>Condition 3 already contains the first two, since it can only hold if $f(z_0)$ is defined and the limit exists. It can also be written in the $\epsilon$–$\delta$ form: for each positive number $\epsilon$, there is a positive number $\delta$ such that:
 $|f(z) - f(z_0)| &lt; \epsilon$ whenever $|z - z_0| &lt; \delta$ (with $z$ in the domain). A function of a complex variable is said to be continuous in a region $R$ if it is continuous at each point of $R$.</p>
+<p>
+        <div class="figure-container">
+            <img src="figures/05-plot-1.png" alt="05-plot-1">
+
+            <button class="code-toggle"
+                    onclick="toggleCode(this)">
+                Show code
+            </button>
+
+            <div class="figure-code" hidden>
+                <pre><code>import numpy as np
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(13, 7))
+
+# a function that is continuous at x = 1 
+plt.subplot(1, 2, 1)
+
+f = lambda x: np.abs(x - 1)
+x = np.linspace(-1, 3, 100)
+y = f(x)
+
+plt.plot(x, y)
+plt.plot(1, 0, &#x27;ro&#x27;)
+
+plt.annotate(&#x27;f(1) = 0&#x27;, xy=(1, 0), xytext=(0.2, 1.5), arrowprops=dict(arrowstyle=&quot;-&gt;&quot;), fontsize=12)
+
+plt.text(-0.5, 0.25, &#x27;$lim_{x \\to 1} |x - 1| = 0$&#x27;, fontsize=12)
+plt.text(1.5, 0.25, &#x27;$lim_{x \\to 1} |x - 1| = 0$&#x27;, fontsize=12)
+plt.title(&#x27;A Continuous Function: $f(x) = |x - 1|$&#x27;)
+
+# a function that is not continuous at x = 1 (Heaviside step function)
+plt.subplot(1, 2, 2)
+left, right = x &lt; 1, x &gt;= 1
+
+plt.plot(x[left], np.zeros(left.sum()), color=&quot;C0&quot;)
+plt.plot(x[right], np.ones(right.sum()), color=&quot;C0&quot;)
+plt.plot(1, 0, &quot;o&quot;, mfc=&quot;white&quot;, color=&quot;C0&quot;)   # open: not attained
+plt.plot(1, 1, &quot;o&quot;, color=&quot;C0&quot;)  
+
+plt.annotate(&#x27;g(1) = 1&#x27;, xy=(1, 1), xytext=(1.5, 0.5), arrowprops=dict(arrowstyle=&quot;-&gt;&quot;), fontsize=12)
+plt.annotate(&#x27;g(1) = 0&#x27;, xy=(1, 0), xytext=(-0.5, 0.5), arrowprops=dict(arrowstyle=&quot;-&gt;&quot;), fontsize=12)
+
+plt.text(0.5, 0.01, &#x27;$lim_{x \\to 1^-} g(x) = 0$&#x27;, fontsize=12, verticalalignment=&#x27;bottom&#x27;, horizontalalignment=&#x27;right&#x27;)
+plt.text(1.5, 0.95, &#x27;$lim_{x \\to 1^+} g(x) = 1$&#x27;, fontsize=12, verticalalignment=&#x27;bottom&#x27;, horizontalalignment=&#x27;left&#x27;)
+plt.title(&quot;A discontinuous function: $g(x)$ (Heaviside step function)&quot;)
+
+for ax in plt.gcf().axes:
+    ax.axhline(0, color=&quot;black&quot;, lw=0.5, ls=&quot;--&quot;)
+    ax.axvline(1, color=&quot;black&quot;, lw=0.5, ls=&quot;--&quot;)
+    ax.set_xlabel(&quot;x&quot;)
+    ax.set_ylabel(&quot;y&quot;)
+    ax.grid(True)
+
+plt.suptitle(&quot;Limit and Continuity of Functions&quot;, fontsize=16)
+plt.tight_layout(rect=[0, 0, 1, 0.95])
+plt.show
+</code></pre>
+            </div>
+        </div></p>
 <p>A composite of continuous functions is continuous. That is, if $f(z)$ is continuous at $z_0$ and $g(z)$ is continuous at $f(z_0)$, then $g(f(z))$ is continuous at $z_0$. Also, if $f(z)$ and $g(z)$ are continuous at $z_0$ and defined for all $z$ in some neighbourhood $|z - z_0| &lt; \delta$ of $z_0$, then $f(z) + g(z)$, $f(z)g(z)$, and $\frac{f(z)}{g(z)}$ (if $g(z_0) \neq 0$) are also continuous at $z_0$. In view of the above, we can say that a polynomial function is continuous everywhere in the complex plane. A rational function is continuous at all points in its domain.</p>
 <p>If a function $f(z)$ is continuous and non-zero at a point $z_0$, then $f(z) \neq 0$ throughout some neighbourhood of $z_0$. This is because if $f(z_0) \neq 0$, then there exists a $\delta &gt; 0$ such that $|f(z) - f(z_0)| &lt; |f(z_0)|$ whenever $|z - z_0| &lt; \delta$. By the triangle inequality, $|f(z)| \geq |f(z_0)| - |f(z) - f(z_0)| &gt; 0$ in that neighbourhood.</p>
 <p>Continuity is closely related to the continuity of the real and imaginary parts of a complex function. If $f(z) = u(x, y) + iv(x, y)$, where $u$ and $v$ are real-valued functions of two real variables $x$ and $y$, then $f(z)$ is continuous at $z_0 = x_0 + iy_0$ if and only if both $u(x, y)$ and $v(x, y)$ are continuous at $(x_0, y_0)$. This follows because $|u - u_0|$ and $|v - v_0|$ are each at most $|f(z) - f(z_0)|$, while $|f(z) - f(z_0)| \leq |u - u_0| + |v - v_0|$.</p>
