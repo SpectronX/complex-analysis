@@ -18,3 +18,23 @@ If a function $f(z)$ is continuous and non-zero at a point $z_0$, then $f(z) \ne
 Continuity is closely related to the continuity of the real and imaginary parts of a complex function. If $f(z) = u(x, y) + iv(x, y)$, where $u$ and $v$ are real-valued functions of two real variables $x$ and $y$, then $f(z)$ is continuous at $z_0 = x_0 + iy_0$ if and only if both $u(x, y)$ and $v(x, y)$ are continuous at $(x_0, y_0)$. This follows because $|u - u_0|$ and $|v - v_0|$ are each at most $|f(z) - f(z_0)|$, while $|f(z) - f(z_0)| \leq |u - u_0| + |v - v_0|$.
 
 If a function $f(z)$ is continuous on a region $R$ that is both closed and bounded, there exists a non-negative real number $M$ such that $|f(z)| \leq M$ for all $z$ in $R$. This is a consequence of the fact that $|f(z)|$ is a real-valued continuous function, and a real-valued continuous function on a closed and bounded region attains its maximum and minimum values. We can take $M$ to be the maximum value of $|f(z)|$ on $R$.
+
+### Derivatives
+
+The derivative of a function $f(z)$ at a point $z_0$ in its domain is defined as the limit:
+$$f'(z_0) = \lim_{z \to z_0} \frac{f(z) - f(z_0)}{z - z_0}$$
+if this limit exists. If $f'(z_0)$ exists, we say that $f(z)$ is differentiable at $z_0$.
+
+For this to make sense, $f$ must be defined throughout a neighbourhood of $z_0$. Then the number $f(z_0 + \Delta z)$ is defined for all sufficiently small $|\Delta z|$.
+
+We can introduce the increment $\Delta z = z - z_0$ and write the derivative as:
+$$f'(z_0) = \lim_{\Delta z \to 0} \frac{f(z_0 + \Delta z) - f(z_0)}{\Delta z}.$$
+If $f'(z_0)$ exists, we can write:
+$$f(z_0 + \Delta z) - f(z_0) = f'(z_0) \Delta z + \epsilon(\Delta z) \Delta z,$$
+where $\epsilon(\Delta z) \to 0$ as $\Delta z \to 0$. This is the complex analogue of the increment theorem for real functions.
+
+Differentiability and continuity are closely linked. If $f(z)$ is differentiable at $z_0$, then it is continuous at $z_0$. This follows from the increment formula above. Taking the limit as $\Delta z \to 0$ gives:
+$$\lim_{\Delta z \to 0} \left[ f(z_0 + \Delta z) - f(z_0) \right] = \lim_{\Delta z \to 0} \left[ f'(z_0) \Delta z + \epsilon(\Delta z) \Delta z \right] = 0,$$
+since both terms on the right go to $0$. Thus, $\lim_{z \to z_0} f(z) = f(z_0)$, which is the definition of continuity at $z_0$.
+
+However, the converse is not true: a function can be continuous at a point but not differentiable there. For example, the function $f(z) = |z|$ is continuous at $z = 0$ but not differentiable there. At $z_0 = 0$ the difference quotient is $\frac{|\Delta z|}{\Delta z}$. Along the positive real axis ($\Delta z = t > 0$) it equals $1$, but along the imaginary axis ($\Delta z = it$, $t > 0$) it equals $\frac{t}{it} = -i$. The two paths give different values, so the limit does not exist.
