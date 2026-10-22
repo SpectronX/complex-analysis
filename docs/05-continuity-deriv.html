@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+    };
+    </script>
+
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <title>Continuity & Derivatives</title>
+</head>
+
+<body>
+    <div class="theme-toggle">
+        <button id="light-theme" aria-label="Light mode">☼</button>
+        <button id="dark-theme" aria-label="Dark mode">☾</button>
+    </div>
+
+    <nav>
+        <div class="nav-container">
+            <ul><li><a href="01-complex-numbers.html">Complex Numbers</a></li><li><a href="02-complex-conjugates.html">Complex Conjugates & Exponentials</a></li><li><a href="03-complex-roots.html">Complex Roots</a></li><li><a href="04-analytic-functions.html">Functions, Mappings and Limits</a></li><li><a href="05-continuity-deriv.html" class="active">Continuity & Derivatives</a></li></ul>
+        </div>
+    </nav>
+
+    <main>
+        <article>
+            <!-- title: Continuity & Derivatives -->
+<!-- order: 5 -->
+<h3>Continuity</h3>
+<p>A function $f(z)$ is said to be continuous at a point $z_0$ in its domain if the following three conditions are satisfied:</p>
+<ol>
+<li>$f(z_0)$ is defined.</li>
+<li>$\lim_{z \to z_0} f(z)$ exists.</li>
+<li>$\lim_{z \to z_0} f(z) = f(z_0)$.</li>
+</ol>
+<p>Condition 3 already contains the first two, since it can only hold if $f(z_0)$ is defined and the limit exists. It can also be written in the $\epsilon$–$\delta$ form: for each positive number $\epsilon$, there is a positive number $\delta$ such that:
+$|f(z) - f(z_0)| &lt; \epsilon$ whenever $|z - z_0| &lt; \delta$ (with $z$ in the domain). A function of a complex variable is said to be continuous in a region $R$ if it is continuous at each point of $R$.</p>
+<p>A composite of continuous functions is continuous. That is, if $f(z)$ is continuous at $z_0$ and $g(z)$ is continuous at $f(z_0)$, then $g(f(z))$ is continuous at $z_0$. Also, if $f(z)$ and $g(z)$ are continuous at $z_0$ and defined for all $z$ in some neighbourhood $|z - z_0| &lt; \delta$ of $z_0$, then $f(z) + g(z)$, $f(z)g(z)$, and $\frac{f(z)}{g(z)}$ (if $g(z_0) \neq 0$) are also continuous at $z_0$. In view of the above, we can say that a polynomial function is continuous everywhere in the complex plane. A rational function is continuous at all points in its domain.</p>
+<p>If a function $f(z)$ is continuous and non-zero at a point $z_0$, then $f(z) \neq 0$ throughout some neighbourhood of $z_0$. This is because if $f(z_0) \neq 0$, then there exists a $\delta &gt; 0$ such that $|f(z) - f(z_0)| &lt; |f(z_0)|$ whenever $|z - z_0| &lt; \delta$. By the triangle inequality, $|f(z)| \geq |f(z_0)| - |f(z) - f(z_0)| &gt; 0$ in that neighbourhood.</p>
+<p>Continuity is closely related to the continuity of the real and imaginary parts of a complex function. If $f(z) = u(x, y) + iv(x, y)$, where $u$ and $v$ are real-valued functions of two real variables $x$ and $y$, then $f(z)$ is continuous at $z_0 = x_0 + iy_0$ if and only if both $u(x, y)$ and $v(x, y)$ are continuous at $(x_0, y_0)$. This follows because $|u - u_0|$ and $|v - v_0|$ are each at most $|f(z) - f(z_0)|$, while $|f(z) - f(z_0)| \leq |u - u_0| + |v - v_0|$.</p>
+<p>If a function $f(z)$ is continuous on a region $R$ that is both closed and bounded, there exists a non-negative real number $M$ such that $|f(z)| \leq M$ for all $z$ in $R$. This is a consequence of the fact that $|f(z)|$ is a real-valued continuous function, and a real-valued continuous function on a closed and bounded region attains its maximum and minimum values. We can take $M$ to be the maximum value of $|f(z)|$ on $R$.</p>
+
+        </article>
+    </main>
+
+    <script>
+    function toggleCode(button) {
+        const code = button.nextElementSibling;
+
+        if (code.hidden) {
+            code.hidden = false;
+            button.textContent = "Hide code";
+        } else {
+            code.hidden = true;
+            button.textContent = "Show code";
+        }
+    }
+    </script>
+
+    <script>
+    const lightButton = document.getElementById("light-theme");
+    const darkButton = document.getElementById("dark-theme");
+
+    function setTheme(theme) {
+        document.documentElement.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+
+        lightButton.classList.toggle("active", theme === "light");
+        darkButton.classList.toggle("active", theme === "dark");
+    }
+
+    lightButton.addEventListener("click", () => {
+        setTheme("light");
+    });
+
+    darkButton.addEventListener("click", () => {
+        setTheme("dark");
+    });
+
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme) {
+        setTheme(savedTheme);
+    } else {
+        const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+        ).matches;
+
+        setTheme(prefersDark ? "dark" : "light");
+    }
+    </script>
+
+</body>
+</html>

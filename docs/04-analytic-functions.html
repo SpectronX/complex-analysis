@@ -30,7 +30,7 @@
 
     <nav>
         <div class="nav-container">
-            <ul><li><a href="01-complex-numbers.html">Complex Numbers</a></li><li><a href="02-complex-conjugates.html">Complex Conjugates & Exponentials</a></li><li><a href="03-complex-roots.html">Complex Roots</a></li><li><a href="04-analytic-functions.html" class="active">Functions, Mappings and Limits</a></li></ul>
+            <ul><li><a href="01-complex-numbers.html">Complex Numbers</a></li><li><a href="02-complex-conjugates.html">Complex Conjugates & Exponentials</a></li><li><a href="03-complex-roots.html">Complex Roots</a></li><li><a href="04-analytic-functions.html" class="active">Functions, Mappings and Limits</a></li><li><a href="05-continuity-deriv.html">Continuity & Derivatives</a></li></ul>
         </div>
     </nav>
 
@@ -125,7 +125,7 @@ plt.show()</code></pre>
 <p>The concept of limits, as known in calculus, can be extended to functions of complex variables. With complex functions, a defined neighbourhood around a point in the complex plane is considered. The function must be defined in a punctured neighbourhood of $z_0$, that is, a neighbourhood with $z_0$ itself removed, because the value of $f$ at $z_0$ plays no part in the limit.</p>
 <p>The limit of a function $f(z)$ as $z$ approaches a point $z_0$ is denoted as $\lim_{z \to z_0} f(z)$. This limit exists if, for every sequence of complex numbers ${z_n}$ with $z_n \neq z_0$ that converges to $z_0$, the corresponding sequence of function values ${f(z_n)}$ converges to the same value $L$. In other words, the limit exists if the function approaches the same value from all directions in the complex plane as $z$ approaches $z_0$.</p>
 <p>By the definition of limits, we can say that the limit of a function $f(z)$ as $z$ approaches a point $z_0$ is equal to $L$ if, for every $\epsilon &gt; 0$, there exists a $\delta &gt; 0$ such that whenever $0 &lt; |z - z_0| &lt; \delta$, it follows that $|f(z) - L| &lt; \epsilon$. This means that we can make the function values arbitrarily close to $L$ by choosing input values sufficiently close to $z_0$.</p>
-<h3>Continuity and theorems on limits</h3>
+<h3>Theorems on limits</h3>
 <ul>
 <li>
 <p><strong>Definition:</strong> $f(z)$ is continuous at $z_0$ if $f(z_0)$ is defined and $\lim_{z \to z_0} f(z) = f(z_0)$.</p>
@@ -141,20 +141,7 @@ plt.show()</code></pre>
 <li>
 <p><strong>Theorem 2:</strong> If $f(z)$ is continuous at $z_0$ and $g(z)$ is continuous at $f(z_0)$, then the composition $g(f(z))$ is continuous at $z_0$.</p>
 </li>
-<li>
-<p><strong>Theorem 3:</strong> If $f(z)$ is continuous at $z_0$ and $g(z)$ is continuous at $z_0$, then the sum, product, and quotient (if $g(z_0) \neq 0$) of $f(z)$ and $g(z)$ are continuous at $z_0$.</p>
-</li>
-<li>
-<p><strong>Theorem 4:</strong> If $f(z)$ is continuous on a closed and bounded region $R$ in the complex plane, then $|f(z)|$ is bounded on $R$ and attains its maximum and minimum values on $R$. (Complex numbers have no ordering, so we compare moduli.)</p>
-</li>
-<li>
-<p><strong>Theorem 5:</strong> If $f(z)$ is continuous on a closed and bounded region $R$ in the complex plane, then $f(z)$ is uniformly continuous on $R$.</p>
-</li>
-<li>
-<p><strong>Theorem 6:</strong> If $f(z)$ is continuous on a closed and bounded region $R$ in the complex plane, then $f(z)$ is integrable on $R$.</p>
-</li>
 </ul>
-<p><strong>Caution:</strong> differentiability implies continuity, but not the other way round. For example, $f(z) = \bar{z}$ is continuous everywhere but differentiable nowhere, and $f(z) = |z|^2$ is differentiable only at $z = 0$. Differentiability needs a stronger condition, namely the Cauchy-Riemann equations.</p>
 
         </article>
     </main>
