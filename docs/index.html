@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+    };
+    </script>
+
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <title>Home</title>
+</head>
+
+<body>
+    <div class="theme-toggle">
+        <button id="light-theme" aria-label="Light mode">☼</button>
+        <button id="dark-theme" aria-label="Dark mode">☾</button>
+    </div>
+
+    <nav>
+        <div class="nav-container">
+            <ul><li><a href="index.html" class="active">Home</a></li><li><a href="01-complex-numbers.html">Complex Numbers</a></li><li><a href="02-complex-conjugates.html">Complex Conjugates & Exponentials</a></li><li><a href="03-complex-roots.html">Complex Roots & De Moivre's Theorem</a></li><li><a href="04-func-maps-lims.html">Functions, Mappings and Limits</a></li><li><a href="05-continuity-deriv.html">Continuity & Derivatives</a></li><li><a href="06-cre.html">Cauchy-Riemann Equations</a></li></ul>
+        </div>
+    </nav>
+
+    <main>
+        <article>
+            <!-- title: Home -->
+<!-- order: 0 -->
+<h2>Complex Analysis: visuals and code, all in one place</h2>
+<p>This is a collection of notes on complex analysis, with a focus on visualizing concepts and providing code assistance to generate those visuals.</p>
+<p>I find mathematical concepts quite interesting when you can see them in action and that's what motivated me to create this collection. This is a work in progress, and I will be adding more content over time.</p>
+<p>The goal is to provide a resource that is both educational and practical, allowing you to not only learn the theory but also get your hands dirty with code to see the concepts come to life.</p>
+<p>If you have any suggestions or feedback on how to improve this collection, please feel free to reach out. I belive this can be a great resource for anyone interested in complex analysis.</p>
+<h3>Let's get started</h3>
+<ol>
+<li><a href="01-complex-numbers.html">Complex Numbers</a></li>
+<li><a href="02-complex-conjugates.html">Complex Conjugates &amp; Exponentials</a></li>
+<li><a href="03-complex-roots.html">Complex Roots &amp; De Moivre's Theorem</a></li>
+<li><a href="04-func-maps-lims.html">Functions, Mappings and Limits</a></li>
+<li><a href="05-continuity-deriv.html">Continuity &amp; Derivatives</a></li>
+<li><a href="06-cre.html">Cauchy-Riemann Equations</a></li>
+</ol>
+<h3>The tool</h3>
+<p>Currently in development is <code>cpxmath</code>, a small Python package that includes an interactive conformal mapping visualizer. All you have to do is type in a function, and watch how the complex plane is mapped.</p>
+<p><em>Note:</em> While there are other packages that can do this, and even better, I wanted to create a simple one that is easy to use, and also understand what goes into making packages in Python.</p>
+
+        </article>
+    </main>
+
+    <script>
+    function toggleCode(button) {
+        const code = button.nextElementSibling;
+
+        if (code.hidden) {
+            code.hidden = false;
+            button.textContent = "Hide code";
+        } else {
+            code.hidden = true;
+            button.textContent = "Show code";
+        }
+    }
+    </script>
+
+    <script>
+    const lightButton = document.getElementById("light-theme");
+    const darkButton = document.getElementById("dark-theme");
+
+    function setTheme(theme) {
+        document.documentElement.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+
+        lightButton.classList.toggle("active", theme === "light");
+        darkButton.classList.toggle("active", theme === "dark");
+    }
+
+    lightButton.addEventListener("click", () => {
+        setTheme("light");
+    });
+
+    darkButton.addEventListener("click", () => {
+        setTheme("dark");
+    });
+
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme) {
+        setTheme(savedTheme);
+    } else {
+        const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+        ).matches;
+
+        setTheme(prefersDark ? "dark" : "light");
+    }
+    </script>
+
+</body>
+</html>

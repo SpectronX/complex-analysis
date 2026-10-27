@@ -19,7 +19,7 @@
         src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
     </script>
 
-    <title>Complex Roots</title>
+    <title>Complex Roots & De Moivre's Theorem</title>
 </head>
 
 <body>
@@ -30,13 +30,13 @@
 
     <nav>
         <div class="nav-container">
-            <ul><li><a href="01-complex-numbers.html">Complex Numbers</a></li><li><a href="02-complex-conjugates.html">Complex Conjugates & Exponentials</a></li><li><a href="03-complex-roots.html" class="active">Complex Roots</a></li><li><a href="04-analytic-functions.html">Functions, Mappings and Limits</a></li><li><a href="05-continuity-deriv.html">Continuity & Derivatives</a></li><li><a href="06-cre-moivre.html">CR Eqn & De Moivre's Theorem</a></li></ul>
+            <ul><li><a href="index.html">Home</a></li><li><a href="01-complex-numbers.html">Complex Numbers</a></li><li><a href="02-complex-conjugates.html">Complex Conjugates & Exponentials</a></li><li><a href="03-complex-roots.html" class="active">Complex Roots & De Moivre's Theorem</a></li><li><a href="04-func-maps-lims.html">Functions, Mappings and Limits</a></li><li><a href="05-continuity-deriv.html">Continuity & Derivatives</a></li><li><a href="06-cre.html">Cauchy-Riemann Equations</a></li></ul>
         </div>
     </nav>
 
     <main>
         <article>
-            <!-- title: Complex Roots -->
+            <!-- title: Complex Roots & De Moivre's Theorem -->
 <!-- order: 3 -->
 <h2>Complex Roots</h2>
 <p>Let's begin from the basics of complex roots. We are able to find the roots of complex numbers using the polar form of complex numbers. Here's the link to the <a href="02-complex-conjugates.html">notes on the polar form of complex numbers</a>.</p>
@@ -109,6 +109,12 @@ plt.grid()
 plt.show()</code></pre>
             </div>
         </div></p>
+<h3>De Moivre's Theorem</h3>
+<p>De Moivre's theorem states that for any complex number $z = r(\cos \theta + i\sin \theta)$ and any integer $n$, we have:
+$$z^n = r^n(\cos(n\theta) + i\sin(n\theta)).$$</p>
+<p>This theorem is particularly useful for finding powers of complex numbers in polar form, and with a small extension, their roots. It allows us to express the $n$-th power of a complex number in terms of its modulus and argument. It also connects complex numbers with trigonometric functions, providing a bridge between algebra and geometry in the complex plane.</p>
+<p>Example: Let $z = 2(\cos \frac{\pi}{4} + i\sin \frac{\pi}{4})$. To find $z^3$, we apply De Moivre's theorem:
+$$z^3 = 2^3(\cos(3 \cdot \frac{\pi}{4}) + i\sin(3 \cdot \frac{\pi}{4})) = 8(\cos \frac{3\pi}{4} + i\sin \frac{3\pi}{4}) = 8\left(-\frac{\sqrt{2}}{2} + i\frac{\sqrt{2}}{2}\right) = -4\sqrt{2} + 4i\sqrt{2}.$$</p>
 
         </article>
     </main>

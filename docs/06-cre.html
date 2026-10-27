@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+    };
+    </script>
+
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <title>Cauchy-Riemann Equations</title>
+</head>
+
+<body>
+    <div class="theme-toggle">
+        <button id="light-theme" aria-label="Light mode">☼</button>
+        <button id="dark-theme" aria-label="Dark mode">☾</button>
+    </div>
+
+    <nav>
+        <div class="nav-container">
+            <ul><li><a href="index.html">Home</a></li><li><a href="01-complex-numbers.html">Complex Numbers</a></li><li><a href="02-complex-conjugates.html">Complex Conjugates & Exponentials</a></li><li><a href="03-complex-roots.html">Complex Roots & De Moivre's Theorem</a></li><li><a href="04-func-maps-lims.html">Functions, Mappings and Limits</a></li><li><a href="05-continuity-deriv.html">Continuity & Derivatives</a></li><li><a href="06-cre.html" class="active">Cauchy-Riemann Equations</a></li></ul>
+        </div>
+    </nav>
+
+    <main>
+        <article>
+            <!-- title: Cauchy-Riemann Equations -->
+<!-- order: 6 -->
+<h3>Cauchy-Riemann Equations</h3>
+<p>The Cauchy-Riemann equations are a set of two partial differential equations that provide a necessary condition for a complex function to be differentiable at a point $z_0 = x_0 + iy_0$, that is, for $f'(z_0)$ to exist.</p>
+<p><em>Theorem:</em> Suppose that $f(z) = u(x, y) + iv(x, y)$ is defined in a neighborhood of $z_0 = x_0 + iy_0$. If $f$ is differentiable at $z_0$, then the partial derivatives $\frac{\partial u}{\partial x}$, $\frac{\partial u}{\partial y}$, $\frac{\partial v}{\partial x}$, and $\frac{\partial v}{\partial y}$ exist at $(x_0, y_0)$ and satisfy the Cauchy-Riemann equations there:
+$$\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}, \quad \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}.$$
+Conversely, if the partial derivatives exist and are continuous in a neighborhood of $(x_0, y_0)$ and the Cauchy-Riemann equations hold at $(x_0, y_0)$, then $f$ is differentiable at $z_0$. In either case, $f'(z_0) = \frac{\partial u}{\partial x} + i\frac{\partial v}{\partial x}$.</p>
+<p>Example: Consider the function $f(z) = z^2 = (x + iy)^2 = x^2 - y^2 + 2ixy$. Here, $u(x, y) = x^2 - y^2$ and $v(x, y) = 2xy$. The partial derivatives are:
+$$\frac{\partial u}{\partial x} = 2x, \quad \frac{\partial u}{\partial y} = -2y, \quad \frac{\partial v}{\partial x} = 2y, \quad \frac{\partial v}{\partial y} = 2x.$$
+The Cauchy-Riemann equations are satisfied:
+$$\frac{\partial u}{\partial x} = 2x = \frac{\partial v}{\partial y}, \quad \frac{\partial u}{\partial y} = -2y = -\frac{\partial v}{\partial x}.$$
+The partial derivatives are continuous everywhere, so $f(z)$ is differentiable at all points in the complex plane, with $f'(z) = 2x + i2y = 2z$.</p>
+<h3>Sufficient Condition for Differentiability</h3>
+<p>The Cauchy-Riemann equations on their own are only a necessary condition for differentiability. There are functions that satisfy them at a point but are not differentiable there. What makes the condition sufficient is that the partial derivatives must also be continuous in a neighborhood of $z_0$.</p>
+<p>What this means is that if the Cauchy-Riemann equations are satisfied at $z_0$ and the partial derivatives are continuous in a neighborhood of $z_0$, then $f(z)$ is differentiable at $z_0$.</p>
+<p>Example: Consider the function $f(z) = \sqrt{|xy|}$. Here, $u(x, y) = \sqrt{|xy|}$ and $v(x, y) = 0$. Since $u(x, 0) = 0$ and $u(0, y) = 0$, all four partial derivatives are $0$ at the origin, so the Cauchy-Riemann equations are satisfied there. However, $f$ is not differentiable at $z = 0$. Along the real axis, the difference quotient is $\frac{f(h) - f(0)}{h} = 0$. Along the line $y = x$, with $z = h(1 + i)$ and $h &gt; 0$, it is $\frac{|h|}{h(1 + i)} = \frac{1}{1 + i} \neq 0$. The two directions give different values, so the limit does not exist. The partial derivatives are not continuous near the origin, which is why the theorem does not apply.</p>
+<p>Example: Consider the function $f(z) = |z|^2 = x^2 + y^2$. Here, $u(x, y) = x^2 + y^2$ and $v(x, y) = 0$. The partial derivatives are:
+$$\frac{\partial u}{\partial x} = 2x, \quad \frac{\partial u}{\partial y} = 2y, \quad \frac{\partial v}{\partial x} = 0, \quad \frac{\partial v}{\partial y} = 0.$$
+The Cauchy-Riemann equations require $2x = 0$ and $2y = 0$, so they hold only at the origin. The partial derivatives are continuous everywhere, so $f(z)$ is differentiable at $z = 0$, with $f'(0) = 0$, and nowhere else.</p>
+
+        </article>
+    </main>
+
+    <script>
+    function toggleCode(button) {
+        const code = button.nextElementSibling;
+
+        if (code.hidden) {
+            code.hidden = false;
+            button.textContent = "Hide code";
+        } else {
+            code.hidden = true;
+            button.textContent = "Show code";
+        }
+    }
+    </script>
+
+    <script>
+    const lightButton = document.getElementById("light-theme");
+    const darkButton = document.getElementById("dark-theme");
+
+    function setTheme(theme) {
+        document.documentElement.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+
+        lightButton.classList.toggle("active", theme === "light");
+        darkButton.classList.toggle("active", theme === "dark");
+    }
+
+    lightButton.addEventListener("click", () => {
+        setTheme("light");
+    });
+
+    darkButton.addEventListener("click", () => {
+        setTheme("dark");
+    });
+
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme) {
+        setTheme(savedTheme);
+    } else {
+        const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+        ).matches;
+
+        setTheme(prefersDark ? "dark" : "light");
+    }
+    </script>
+
+</body>
+</html>
