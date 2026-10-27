@@ -1,4 +1,4 @@
-<!-- title: CR Eqn & De Moivre's Theorem -->
+<!-- title: Cauchy-Riemann Equations -->
 <!-- order: 6 -->
 
 ### Cauchy-Riemann Equations
