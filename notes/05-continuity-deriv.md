@@ -41,3 +41,12 @@ $$\lim_{\Delta z \to 0} \left[ f(z_0 + \Delta z) - f(z_0) \right] = \lim_{\Delta
 since both terms on the right go to $0$. Thus, $\lim_{z \to z_0} f(z) = f(z_0)$, which is the definition of continuity at $z_0$.
 
 However, the converse is not true: a function can be continuous at a point but not differentiable there. For example, the function $f(z) = |z|$ is continuous at $z = 0$ but not differentiable there. At $z_0 = 0$ the difference quotient is $\frac{|\Delta z|}{\Delta z}$. Along the positive real axis ($\Delta z = t > 0$) it equals $1$, but along the imaginary axis ($\Delta z = it$, $t > 0$) it equals $\frac{t}{it} = -i$. The two paths give different values, so the limit does not exist.
+
+### Differentiation Formulas
+
+The differentiation rules applied in complex analysis are identical to those in real analysis. This is because the derivative has the same limit definition, and the limit theorems used to prove the rules still hold. Hence, the same formulas for the derivatives of sums, products, and quotients of functions hold wherever the functions are differentiable. Namely:
+- $d(c)/dz = 0$, $d(z)/dz = 1$, $d(cf(z))/dz = cf'(z)$
+- $d(z^n)/dz = nz^{n-1}$, for any integer $n$ (with $z \neq 0$ if $n < 0$)
+- $d(f(z) + g(z))/dz = f'(z) + g'(z)$
+- $d(f(z)g(z))/dz = f'(z)g(z) + f(z)g'(z)$
+- $d(f(z)/g(z))/dz = \frac{f'(z)g(z) - f(z)g'(z)}{g(z)^2}$, provided $g(z) \neq 0$.
