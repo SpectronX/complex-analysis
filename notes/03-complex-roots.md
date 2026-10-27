@@ -1,4 +1,4 @@
-<!-- title: Complex Roots -->
+<!-- title: Complex Roots & De Moivre's Theorem -->
 <!-- order: 3 -->
 
 ## Complex Roots
@@ -55,3 +55,13 @@ for $k = 0, 1, 2$, that is,
 
 <!-- figure: 03-plot-1 -->
 <!-- code: 03-plot-1 -->
+
+### De Moivre's Theorem
+
+De Moivre's theorem states that for any complex number $z = r(\cos \theta + i\sin \theta)$ and any integer $n$, we have:
+$$z^n = r^n(\cos(n\theta) + i\sin(n\theta)).$$
+
+This theorem is particularly useful for finding powers of complex numbers in polar form, and with a small extension, their roots. It allows us to express the $n$-th power of a complex number in terms of its modulus and argument. It also connects complex numbers with trigonometric functions, providing a bridge between algebra and geometry in the complex plane.
+
+Example: Let $z = 2(\cos \frac{\pi}{4} + i\sin \frac{\pi}{4})$. To find $z^3$, we apply De Moivre's theorem:
+$$z^3 = 2^3(\cos(3 \cdot \frac{\pi}{4}) + i\sin(3 \cdot \frac{\pi}{4})) = 8(\cos \frac{3\pi}{4} + i\sin \frac{3\pi}{4}) = 8\left(-\frac{\sqrt{2}}{2} + i\frac{\sqrt{2}}{2}\right) = -4\sqrt{2} + 4i\sqrt{2}.$$
