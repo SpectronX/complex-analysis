@@ -109,6 +109,12 @@ a:visited:hover {
 
 /* ---------- Navigation / Sidebar ---------- */
 
+.nav-toggle,
+.nav-close,
+.nav-backdrop {
+    display: none;
+}
+
 nav {
     position: fixed;
     top: 0;
@@ -477,12 +483,78 @@ mjx-container[display="true"] {
 @media (max-width: 700px) {
 
     nav {
-        position: static;
+        position: fixed;
+        z-index: 1100;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: min(290px, 86vw);
+        height: 100vh;
+        padding: 26px 20px;
+        border-right: 1px solid var(--rule);
+        border-bottom: 0;
+        box-shadow: 12px 0 32px rgba(0, 0, 0, 0.12);
+        transform: translateX(-105%);
+        transition: transform 220ms ease;
+    }
+
+    nav.open {
+        transform: translateX(0);
+    }
+
+    .nav-toggle {
+        position: fixed;
+        z-index: 1050;
+        top: 50%;
+        left: 0;
+        display: grid;
+        width: 34px;
+        height: 54px;
+        place-items: center;
+        border: 1px solid var(--rule);
+        border-left: 0;
+        border-radius: 0 8px 8px 0;
+        background: var(--side-bg);
+        color: var(--body-color);
+        box-shadow: 2px 3px 12px rgba(0, 0, 0, 0.12);
+        font: 28px/1 system-ui, sans-serif;
+        cursor: pointer;
+        transform: translateY(-50%);
+    }
+
+    .nav-toggle span {
+        transition: transform 220ms ease;
+    }
+
+    .nav-toggle[aria-expanded="true"] span {
+        transform: rotate(180deg);
+    }
+
+    .nav-close {
+        display: grid;
+        width: 36px;
+        height: 36px;
+        margin: 0 0 16px auto;
+        place-items: center;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        background: var(--side-bg);
+        color: var(--side-text);
+        font: 24px/1 system-ui, sans-serif;
+        cursor: pointer;
+    }
+
+    .nav-backdrop:not([hidden]) {
+        position: fixed;
+        z-index: 1090;
+        inset: 0;
+        display: block;
         width: 100%;
-        height: auto;
-        padding: 16px;
-        border-right: 0;
-        border-bottom: 1px solid var(--rule);
+        height: 100%;
+        padding: 0;
+        border: 0;
+        background: rgba(0, 0, 0, 0.42);
+        cursor: pointer;
     }
 
     nav nav {
@@ -495,9 +567,13 @@ mjx-container[display="true"] {
     }
 
     nav ul {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 4px;
+        display: block;
+    }
+
+    nav a,
+    nav a:visited {
+        padding-top: 11px;
+        padding-bottom: 11px;
     }
 
     main {
@@ -518,6 +594,13 @@ mjx-container[display="true"] {
 
     .figure-container img {
         max-width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    nav,
+    .nav-toggle span {
+        transition: none;
     }
 }
 
