@@ -139,8 +139,14 @@ def page_builder(title, nav, body):
         <button id="dark-theme" aria-label="Dark mode">☾</button>
     </div>
 
-    <nav>
+    <button class="nav-toggle" type="button" aria-label="Open contents" aria-controls="lesson-navigation" aria-expanded="false">
+        <span aria-hidden="true">›</span>
+    </button>
+    <button class="nav-backdrop" type="button" aria-label="Close contents" hidden></button>
+
+    <nav id="lesson-navigation" aria-label="Lesson contents">
         <div class="nav-container">
+            <button class="nav-close" type="button" aria-label="Close contents">‹</button>
             {nav}
         </div>
     </nav>
@@ -196,6 +202,71 @@ def page_builder(title, nav, body):
 
         setTheme(prefersDark ? "dark" : "light");
     }}
+    </script>
+
+    <script>
+    const navToggle = document.querySelector(".nav-toggle");
+    const navClose = document.querySelector(".nav-close");
+    const navBackdrop = document.querySelector(".nav-backdrop");
+    const lessonNavigation = document.getElementById("lesson-navigation");
+    const mobileNavigation = window.matchMedia("(max-width: 700px)");
+
+    function setNavigationOpen(open) {{
+        lessonNavigation.classList.toggle("open", open);
+        lessonNavigation.inert = mobileNavigation.matches && !open;
+        navBackdrop.hidden = !open;
+        navToggle.setAttribute("aria-expanded", String(open));
+        navToggle.setAttribute("aria-label", open ? "Close contents" : "Open contents");
+
+        if (open) {{
+            lessonNavigation.querySelector("a")?.focus();
+        }} else if (mobileNavigation.matches) {{
+            navToggle.focus();
+        }}
+    }}
+
+    function updateNavigationForViewport() {{
+        if (mobileNavigation.matches) {{
+            lessonNavigation.inert = !lessonNavigation.classList.contains("open");
+        }} else {{
+            lessonNavigation.inert = false;
+            lessonNavigation.classList.remove("open");
+            navBackdrop.hidden = true;
+            navToggle.setAttribute("aria-expanded", "false");
+        }}
+    }}
+
+    navToggle.addEventListener("click", () => setNavigationOpen(!lessonNavigation.classList.contains("open")));
+    navClose.addEventListener("click", () => setNavigationOpen(false));
+    navBackdrop.addEventListener("click", () => setNavigationOpen(false));
+    lessonNavigation.querySelectorAll("a").forEach(link => {{
+        link.addEventListener("click", () => {{
+            if (mobileNavigation.matches) setNavigationOpen(false);
+        }});
+    }});
+
+    document.addEventListener("keydown", event => {{
+        if (event.key === "Escape" && lessonNavigation.classList.contains("open")) {{
+            setNavigationOpen(false);
+        }}
+
+        if (event.key === "Tab" && lessonNavigation.classList.contains("open")) {{
+            const focusable = [navClose, ...lessonNavigation.querySelectorAll("a")];
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+
+            if (event.shiftKey && document.activeElement === first) {{
+                event.preventDefault();
+                last.focus();
+            }} else if (!event.shiftKey && document.activeElement === last) {{
+                event.preventDefault();
+                first.focus();
+            }}
+        }}
+    }});
+
+    mobileNavigation.addEventListener("change", updateNavigationForViewport);
+    updateNavigationForViewport();
     </script>
 
 </body>
