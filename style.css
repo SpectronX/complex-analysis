@@ -70,10 +70,16 @@
 
 * {
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 html {
     scroll-behavior: smooth;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
