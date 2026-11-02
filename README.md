@@ -39,6 +39,8 @@ function = parse_function("z**2 + 1")
 
 # Check the Cauchy-Riemann equations
 result = analyze(function.eval_expr)
+
+print(result)
 ```
 
 ## License
