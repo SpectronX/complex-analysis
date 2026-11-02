@@ -1,5 +1,4 @@
 # Complex Analysis, visualized and implemented in code
------
 
 This is a collection of notes on complex analysis, with the goal of making the subject interactive and visual. A secondary goal is to also provide implementations of the concepts in Python, so that students can explore the subject with code. To support this, the notes are accompanied by a Python package that implements the concepts and provides visualizations.
 
@@ -10,14 +9,12 @@ The notes are intended for students who are meeting complex analysis for the fir
 ![A mapping of a function](figures/04-plot-1.png)
 
 ## Start here
-----
 
 Want to get started? Click the button below to go the first note.
 
 ![Start here]()
 
 ## Try it yourself
-----
 
 **Note**: The package is still in development.
 
