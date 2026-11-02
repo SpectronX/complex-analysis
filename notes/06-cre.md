@@ -1,7 +1,7 @@
 <!-- title: Cauchy-Riemann Equations -->
 <!-- order: 6 -->
 
-### Cauchy-Riemann Equations
+## Cauchy-Riemann Equations
 
 The Cauchy-Riemann equations are a set of two partial differential equations that provide a necessary condition for a complex function to be differentiable at a point $z_0 = x_0 + iy_0$, that is, for $f'(z_0)$ to exist.
 

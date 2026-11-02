@@ -1,7 +1,7 @@
 <!-- title: Continuity & Derivatives -->
 <!-- order: 5 -->
 
-### Continuity
+## Continuity
 
 A function $f(z)$ is said to be continuous at a point $z_0$ in its domain if the following three conditions are satisfied:
 1. $f(z_0)$ is defined.
