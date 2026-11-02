@@ -12,7 +12,7 @@ The notes are intended for students who are meeting complex analysis for the fir
 
 Want to get started? Click the button below to go the first note.
 
-![Start here](https://spectronx.github.io/complex-analysis/)
+[Start here](https://spectronx.github.io/complex-analysis/)
 
 ## Try it yourself
 
