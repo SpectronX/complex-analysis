@@ -511,7 +511,7 @@ mjx-container[display="true"] {
     .nav-toggle {
         position: fixed;
         z-index: 1050;
-        top: 50%;
+        top: 16px;
         left: 0;
         display: grid;
         width: 34px;
@@ -525,7 +525,6 @@ mjx-container[display="true"] {
         box-shadow: 2px 3px 12px rgba(0, 0, 0, 0.12);
         font: 28px/1 system-ui, sans-serif;
         cursor: pointer;
-        transform: translateY(-50%);
     }
 
     .nav-toggle span {
