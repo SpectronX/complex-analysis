@@ -488,6 +488,18 @@ mjx-container[display="true"] {
 
 @media (max-width: 700px) {
 
+    body::before {
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 68px;
+        border-bottom: 1px solid var(--rule);
+        background: var(--body-bg-color);
+        content: "";
+    }
+
     nav {
         position: fixed;
         z-index: 1100;
@@ -511,15 +523,14 @@ mjx-container[display="true"] {
     .nav-toggle {
         position: fixed;
         z-index: 1050;
-        top: 16px;
-        left: 0;
+        top: 12px;
+        left: 16px;
         display: grid;
-        width: 34px;
-        height: 54px;
+        width: 42px;
+        height: 42px;
         place-items: center;
         border: 1px solid var(--rule);
-        border-left: 0;
-        border-radius: 0 8px 8px 0;
+        border-radius: 6px;
         background: var(--side-bg);
         color: var(--body-color);
         box-shadow: 2px 3px 12px rgba(0, 0, 0, 0.12);
@@ -583,7 +594,7 @@ mjx-container[display="true"] {
 
     main {
         margin-left: 0;
-        padding: 40px 20px 70px;
+        padding: 88px 20px 70px;
     }
 
     main::before {
@@ -625,6 +636,14 @@ mjx-container[display="true"] {
     border-radius: 6px;
 
     background: var(--side-bg);
+}
+
+@media (max-width: 700px) {
+    .theme-toggle {
+        top: 16px;
+        right: 16px;
+        z-index: 1050;
+    }
 }
 
 .theme-toggle button {
